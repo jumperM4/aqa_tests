@@ -1,0 +1,29 @@
+services:
+  qa_tests:
+    build: .
+    container_name: tmdb_tests
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs  # сохраняем логи на хосте
+      - ./reports:/app/reports # например, отчеты pytest (если есть)
+    command: >
+      pytest --tb=short --disable-warnings
+      --junitxml=/app/reports/results.xml
+      --html=/app/reports/report.html
+      --self-contained-html
+#--junitxml=/app/reports/results.xml — XML-отчёт, стандарт для CI-систем.
+#--html=/app/reports/report.html — красивый HTML-отчёт.
+#--self-contained-html — включает все CSS/JS в один файл, чтобы можно было открыть без интернета.
+
+
+
+# Сборка (один раз или при изменении Dockerfile)
+#docker-compose build
+
+# Запуск тестов
+#docker-compose up --build --abort-on-container-exit --exit-code-from qa_tests
+
+#Если хочешь запустить только юнит-тесты:
+#docker-compose run --rm qa_tests pytest -m "not integration"
+
