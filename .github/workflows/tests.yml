@@ -21,4 +21,7 @@ jobs:
       run: docker build -t tmdb-tests .
 
     - name: Run tests
-      run: docker run --rm --env-file .env tmdb-tests
+      run: docker run --rm \
+        -e BASE_URL=${{ secrets.BASE_URL }} \
+        -e KEY_TO_API_ACCESS=${{ secrets.KEY_TO_API_ACCESS }} \
+        tmdb-tests

@@ -7,11 +7,11 @@ load_dotenv()
 
 @pytest.fixture(scope='session')
 def api_key():
-    return os.getenv('key_to_API_access')
+    return os.getenv('KEY_TO_API_ACCESS')
 
 @pytest.fixture(scope='session')
 def base_url():
-    return os.getenv('base_url')
+    return os.getenv('BASE_URL')
 
 @pytest.fixture(scope='session')
 def tmdb_client(base_url, api_key):
