@@ -22,4 +22,3 @@ jobs:
           -e BASE_URL=${{ secrets.BASE_URL }} \
           -e KEY_TO_API_ACCESS=${{ secrets.KEY_TO_API_ACCESS }} \
           tmdb-tests
-
