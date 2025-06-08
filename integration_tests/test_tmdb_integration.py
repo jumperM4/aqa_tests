@@ -8,8 +8,8 @@ load_dotenv()
 @pytest.mark.integration
 def test_get_popular_movies_real_api():
     client = TMDB_client(
-        base_url=os.getenv("base_url"),
-        api_key=os.getenv("key_to_API_access")
+        base_url=os.getenv("BASE_URL"),
+        api_key=os.getenv("KEY_TO_API_ACCESS")
     )
 
     data = client.get_popular_movies(language="en-US", page="1")
